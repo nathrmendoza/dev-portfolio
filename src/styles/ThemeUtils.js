@@ -1,0 +1,1 @@
+export const getTheme = (propName) => (props) => props.theme[propName];

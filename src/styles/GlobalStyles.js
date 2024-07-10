@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components"
+import { getTheme } from "./ThemeUtils"
 
 export const GlobalStyles = createGlobalStyle`
     /* START RESET CSS
@@ -79,4 +80,36 @@ export const GlobalStyles = createGlobalStyle`
              url('./assets/fonts/OpenSans-Italic-VariableFont_wdth,wght.woff') format('woff');
     }
     /* END FONTS */
+
+    /* GLOBAL STYLES */
+    * {
+        box-sizing: border-box;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        background-color: ${getTheme('bodyColor')};
+        transition: background-color 0.6s ease-in-out;
+    }
+    /* END GLOBAL STYLES */
+
+    /* ANIMATIONS */
+    @keyframes toMoon {
+        from {
+            transform: rotate(0);
+        }
+        to {
+            transform: rotate(-180deg);
+        }
+    }
+    @keyframes toSun {
+        from {
+            transform: rotate(-180deg);
+        }
+        to {
+            transform: rotate(-360deg);
+        }
+    }
+    /* END ANIMATIONS */
 `

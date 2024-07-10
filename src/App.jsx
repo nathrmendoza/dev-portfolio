@@ -1,31 +1,55 @@
+import { useEffect, useState } from 'react'
+import {
+  Route,
+  Routes,
+} from "react-router-dom";
+
 import { ThemeProvider } from 'styled-components'
 import { GlobalStyles } from './styles/GlobalStyles'
-import { theme } from './styles/theme'
+import { lightTheme, darkTheme } from './styles/theme'
 
-import styled from 'styled-components'
-import { getTheme } from './styles/ThemeUtils'
+//routes
+import NotFound from './notfound';
+import Root from './routes/Root';
+import Home from './routes/Home';
+import Background from './routes/Background';
+import Toolkit from './routes/Toolkit';
+import Works from './routes/Works';
+import Contact from './routes/Contact';
 
-export const BigHeading = styled.h1`
-  font-size: 128px;
-  line-height: auto;
-  color: ${getTheme('darkColor')};
-  font-family: ${getTheme('serif')};
-  font-style: italic;
-  font-weight: 600;
-  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  text-align: center;
-`
+import { AnimatePresence } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+const themePref = window.matchMedia("(prefers-color-scheme: dark)");
 
 function App() {
+  // set initial state to themePref.matches ? 'dark' : 'light' if i want to match user os theme
+  const [currentTheme, setCurrentTheme] = useState('light');
+  
+  const toggleTheme = e => {
+    e.preventDefault();
+    setCurrentTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  }
+
+  const location = useLocation(); 
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles/>
-      <div style={{
-        width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center'
-      }}>
-      <BigHeading>Nath the Developer</BigHeading>
-      </div>
+      <Header toggleThemeFunc={toggleTheme} themeColor={currentTheme}/>
+      <AnimatePresence>
+        <Routes location={location} key={location.pathname}>
+          <Route index element={<Home />} />
+          <Route path="/background" element={<Background/>} />
+          <Route path="/toolkit" element={<Toolkit/>} />
+          <Route path="/works" element={<Works/>} />
+          <Route path="/contact" element={<Contact/>} />
+          <Route path="*" element={<NotFound/>}/>
+        </Routes>
+      </AnimatePresence>
+      <Footer/>
     </ThemeProvider>
   )
 }

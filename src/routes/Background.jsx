@@ -36,7 +36,7 @@ const Background = ({themeColor}) => {
         <MainContainer>
             <PageAnimWrapper>
                 <InnerWrapper>    
-                    <SectionHeading style={{marginBottom: '72px'}}>Background</SectionHeading>
+                    <SectionHeading style={{marginBottom: '42px'}}>Background</SectionHeading>
                     {worksData.map((work, index) => <BackgroundItem key={index} work={work} orient={index % 2 === 0 ? 'right' : 'left'}/>)}
                     <MultiDotElement />
                 </InnerWrapper>

@@ -20,6 +20,12 @@ export const MediumWrapper = styled.div`
     margin: 0 auto;
 `
 
+export const NarrowWrapper = styled.div`
+    width: 100%;
+    max-width: 995px;
+    margin: 0 auto;
+`
+
 export const MainNoHeight = styled.div`
     width: 100%;
     max-width: 1920px;

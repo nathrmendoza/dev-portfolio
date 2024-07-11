@@ -9,7 +9,8 @@ export const darkTheme = {
     bodyColor: "#363636",
     mainColor: "#FFFFFF",
     textShadowD: "0 4px 4px rgba(0, 0, 0, 0.6)",
-    socBorder: "rgba(255,255,255,0.25)"
+    socBorder: "rgba(255,255,255,0.25)",
+    headerGradient: "linear-gradient(0deg, rgba(54,54,54,0) 0%, rgba(54,54,54,1) 65%)"
 }
 
 export const lightTheme = {
@@ -17,5 +18,6 @@ export const lightTheme = {
     bodyColor: "#FFFFFF",
     mainColor: "#363636",
     textShadowD: "0 4px 4px rgba(0, 0, 0, 0.25)",
-    socBorder: "rgba(0,0,0,0.25)"
+    socBorder: "rgba(0,0,0,0.25)",
+    headerGradient: "linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 65%)"
 }

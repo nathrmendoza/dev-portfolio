@@ -15,6 +15,22 @@ import LogoAnimWrapper from '../utils/LogoAnimWrapper'
 import Navigation from './Navigation'
 import { Link } from 'react-router-dom'
 
+import { motion } from 'framer-motion'
+
+const animations = {
+    initial: {opacity: 0 },
+    animate: {opacity: 1,
+        transition: {
+            duration: 2
+        }
+    },
+    final: {opacity: 0,
+        transition: {
+            duration: 2
+        }
+    },
+}
+
 const Header = ({toggleThemeFunc, themeColor}) => {
     
     const defaultSocMed = {
@@ -25,6 +41,11 @@ const Header = ({toggleThemeFunc, themeColor}) => {
 
     return (
         <HeaderMain>
+            {
+                themeColor === 'light'
+                ? <BackgroundLight variants={animations} initial="initial" animate="animate" exit="final"/>
+                : <BackgroundDark variants={animations} initial="initial" animate="animate" exit="final"/>
+            }
             <MainNoHeight>    
                 <FlexContainer>
                     <LogoContainer>
@@ -60,12 +81,32 @@ const Header = ({toggleThemeFunc, themeColor}) => {
     )
 }
 
+const BackgroundLight = styled(motion.div)`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 65%);
+`
+const BackgroundDark = styled(motion.div)`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    background: linear-gradient(0deg, rgba(54,54,54,0) 0%, rgba(54,54,54,1) 65%);
+`
+
 const HeaderMain = styled.div`
     width: 100%;
     top: 0;
     left: 0;
     position: sticky;
-    background-color: ${getTheme('bodyColor')};
+    // background: ${getTheme('bodyColor')};
+    // background: ${getTheme('headerGradient')};
     z-index: 99;
     transition: background-color 0.6s ease-in-out;
 `

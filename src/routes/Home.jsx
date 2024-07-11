@@ -17,7 +17,7 @@ const Home = () => {  const [textIndex, setTextIndex] = useState(0);
     }, [])
 
     return (
-        <MainContainer>
+        <HeroWrapper>
             <PageAnimWrapper>
                 <MediumWrapper>
                     <CustomHeroHeading>Nath the De<TextTransition springConfig={presets.gentle}>{HEROTEXT[textIndex % HEROTEXT.length]}</TextTransition></CustomHeroHeading>
@@ -26,11 +26,18 @@ const Home = () => {  const [textIndex, setTextIndex] = useState(0);
                     </Paragraph>
                 </MediumWrapper>
             </PageAnimWrapper>
-        </MainContainer>
+        </HeroWrapper>
     )
 }
 
 export default Home
+
+const HeroWrapper = styled(MainContainer)`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+`
 
 const CustomHeroHeading = styled(HeroHeading)`
     display: flex;

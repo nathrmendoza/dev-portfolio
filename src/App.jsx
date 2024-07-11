@@ -44,7 +44,7 @@ function App() {
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
           <Route index element={<Home />} />
-          <Route path="/background" element={<Background/>} />
+          <Route path="/background" element={<Background themeColor={currentTheme}/>} />
           <Route path="/toolkit" element={<Toolkit/>} />
           <Route path="/works" element={<Works/>} />
           <Route path="/contact" element={<Contact/>} />

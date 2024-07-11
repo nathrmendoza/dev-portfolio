@@ -26,15 +26,15 @@ const CustomCursor = () => {
     const hoverElements = document.querySelectorAll('button, a');
     const handleMouseEnter = () => {
         if (mouseContainer.current) {
-            mouseContainer.current.style.width = '72px';
-            mouseContainer.current.style.height = '72px';
+            mouseContainer.current.style.width = '56px';
+            mouseContainer.current.style.height = '56px';
         }
     }
     
     const handleMouseLeave = () => {
         if (mouseContainer.current) {
-            mouseContainer.current.style.width = '96px';
-            mouseContainer.current.style.height = '96px';
+            mouseContainer.current.style.width = '72px';
+            mouseContainer.current.style.height = '72px';
         }
     }
 
@@ -90,10 +90,10 @@ const CustomCursor = () => {
 }
 
 const CursorContainer = styled.div`
-    width: 96px;
-    height: 96px;
+    width: 72px;
+    height: 72px;
     border-radius: 100%;
-    border: 5px solid ${getTheme('mainColor')};
+    border: 3px solid ${getTheme('mainColor')};
     position: fixed;
     z-index: 100;
     background: ${getTheme('mainColor')};

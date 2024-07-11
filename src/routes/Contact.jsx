@@ -4,11 +4,11 @@ import PageAnimWrapper from "../utils/PageAnimWrapper"
 
 const Contact = () => {
     return (
-        <PageAnimWrapper>
             <MainContainer style={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
-                <HeroHeading>Contact</HeroHeading>
+                <PageAnimWrapper>
+                    <HeroHeading>Contact</HeroHeading>
+                </PageAnimWrapper>
             </MainContainer>
-        </PageAnimWrapper>
     )
 }
 

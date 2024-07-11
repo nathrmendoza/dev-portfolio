@@ -13,6 +13,7 @@ import { getTheme } from '../styles/ThemeUtils'
 import LogoAnimWrapper from '../utils/LogoAnimWrapper'
 
 import Navigation from './Navigation'
+import { Link } from 'react-router-dom'
 
 const Header = ({toggleThemeFunc, themeColor}) => {
     
@@ -27,14 +28,14 @@ const Header = ({toggleThemeFunc, themeColor}) => {
             <MainNoHeight>    
                 <FlexContainer>
                     <LogoContainer>
-                        <a href="/">
+                        <Link to="/">
                             <LogoAnimWrapper>
                                 {themeColor === 'light' 
                                     ? <DarkLogo width="125" height="71" />
                                     : <LightLogo width="125" height="71" />
                                 }
                             </LogoAnimWrapper>
-                        </a>
+                        </Link>
                     </LogoContainer>
                     <NavContainer>
                         <Navigation />
@@ -64,6 +65,9 @@ const HeaderMain = styled.div`
     top: 0;
     left: 0;
     position: sticky;
+    background-color: ${getTheme('bodyColor')};
+    z-index: 99;
+    transition: background-color 0.6s ease-in-out;
 `
 
 const NavContainer = styled.div`

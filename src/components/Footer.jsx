@@ -22,7 +22,7 @@ const FlexContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 36px 0 42px;
+    padding: 24px 0;
 `
 
 const FooterMessage = styled.p`

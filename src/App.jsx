@@ -21,6 +21,7 @@ import { AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import CustomCursor from './components/CustomCursor';
 
 const themePref = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -38,6 +39,7 @@ function App() {
   return (
     <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles/>
+      <CustomCursor />
       <Header toggleThemeFunc={toggleTheme} themeColor={currentTheme}/>
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>

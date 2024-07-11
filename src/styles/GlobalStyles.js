@@ -84,6 +84,7 @@ export const GlobalStyles = createGlobalStyle`
     /* GLOBAL STYLES */
     * {
         box-sizing: border-box;
+        cursor: none!important;
     }
     html {
         scroll-behavior: smooth;
@@ -91,6 +92,21 @@ export const GlobalStyles = createGlobalStyle`
     body {
         background-color: ${getTheme('bodyColor')};
         transition: background-color 0.6s ease-in-out;
+    }
+    ::selection {
+        background: ${getTheme('mainColor')};
+        color: ${getTheme('bodyColor')};
+    }
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px #ccc;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background-color: #9F9F9F;
     }
     /* END GLOBAL STYLES */
 

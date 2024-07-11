@@ -4,11 +4,11 @@ import PageAnimWrapper from "../utils/PageAnimWrapper"
 
 const Works = () => {
     return (
-        <PageAnimWrapper>
         <MainContainer style={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
-            <HeroHeading>Works</HeroHeading>
+            <PageAnimWrapper>
+                <HeroHeading>Works</HeroHeading>
+            </PageAnimWrapper>
         </MainContainer>
-        </PageAnimWrapper>
     )
 }
 

@@ -4,11 +4,11 @@ import PageAnimWrapper from "../utils/PageAnimWrapper"
 
 const Background = () => {
     return (
-        <PageAnimWrapper>
         <MainContainer style={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
-            <HeroHeading>Background</HeroHeading>
+            <PageAnimWrapper>
+                <HeroHeading>Background</HeroHeading>
+            </PageAnimWrapper>
         </MainContainer>
-        </PageAnimWrapper>
     )
 }
 

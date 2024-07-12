@@ -4,6 +4,7 @@ import { SectionHeading } from "../styles/Typography"
 import PageAnimWrapper from "../utils/PageAnimWrapper"
 import BackgroundItem from "../components/BackgroundItem"
 import MultiDot from '../assets/multidot.svg?react';
+import { useEffect, useState } from "react"
 
 const worksData = [
     {
@@ -25,25 +26,36 @@ const worksData = [
 ]
 
 const Background = ({themeColor}) => {
-    const MultiDotElement = styled(MultiDot)`
-        position: absolute;
-        left: 50%;
-        bottom: 48px;
-        transform: translateX(-50%) ${themeColor === 'dark' ? 'rotate(180deg)' : 'rotate(0)'};
-    `
+
+    const [startAnimation, setStartAnimation] = useState(false);
+
+    useEffect(() => {
+        const pageTransitionTimer = setTimeout(() => {
+            setStartAnimation(true)
+        }, 1000);
+
+        return () => clearInterval(pageTransitionTimer);
+    }, [])
 
     return (
         <MainContainer>
             <PageAnimWrapper>
                 <InnerWrapper>    
                     <SectionHeading style={{marginBottom: '42px'}}>Background</SectionHeading>
-                    {worksData.map((work, index) => <BackgroundItem key={index} work={work} orient={index % 2 === 0 ? 'right' : 'left'}/>)}
-                    <MultiDotElement />
+                    {worksData.map((work, index) => <BackgroundItem key={index} work={work} orient={index % 2 === 0 ? 'right' : 'left'} startAnimation={startAnimation}/>)}
+                    <MultiDotElement $themeColor={themeColor} />
                 </InnerWrapper>
             </PageAnimWrapper>
         </MainContainer>
     )
 }
+
+const MultiDotElement = styled(MultiDot)`
+    position: absolute;
+    left: 50%;
+    bottom: 48px;
+    transform: translateX(-50%) ${props => (props.$themeColor === 'dark' ? 'rotate(180deg)' : 'rotate(0)')};
+`
 
 const InnerWrapper = styled(LargeWrapper)`
     padding: 72px 0 124px;

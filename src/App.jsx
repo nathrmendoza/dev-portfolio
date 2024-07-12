@@ -28,6 +28,7 @@ const themePref = window.matchMedia("(prefers-color-scheme: dark)");
 function App() {
   // set initial state to themePref.matches ? 'dark' : 'light' if i want to match user os theme
   const [currentTheme, setCurrentTheme] = useState('light');
+  const [hoverElements, setHoverElements] = useState([]);
   
   const toggleTheme = e => {
     e.preventDefault();
@@ -36,10 +37,15 @@ function App() {
 
   const location = useLocation(); 
 
+  useEffect(() => {
+    //event listener for cursor hoverables
+    setHoverElements(document.querySelectorAll('button, a'))
+  }, [location])
+
   return (
     <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles/>
-      <CustomCursor />
+      <CustomCursor hoverElements={hoverElements}/>
       <Header toggleThemeFunc={toggleTheme} themeColor={currentTheme}/>
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>

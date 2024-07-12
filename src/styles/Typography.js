@@ -25,6 +25,18 @@ export const SectionHeading = styled.h2`
 	margin: 0 0 31px;
 `
 
+export const WorkItemHeading = styled.h3`
+	font-family: ${getTheme('serif')};
+	font-size: 64px;
+	line-height: auto;
+	font-style: italic;
+	font-weight: 600;
+	color: #FFF;
+	text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+	text-align: center;
+	margin: 0 0 36px;
+`
+
 export const Paragraph = styled.p`
 	font-family: ${getTheme('sansSerif')};
 	font-size: 24px;

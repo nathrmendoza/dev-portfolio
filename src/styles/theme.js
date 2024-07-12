@@ -2,6 +2,9 @@
 export const defaults = {
     serif: "playfair",
     sansSerif: "opensans",
+    borderColor: "#DFDFDF",
+    trackColor: "#CCCCCC",
+    thumbColor: "#9F9F9F"
 }
 
 export const darkTheme = {

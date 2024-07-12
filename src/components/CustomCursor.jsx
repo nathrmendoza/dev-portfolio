@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { getTheme } from '../styles/ThemeUtils'
 import { useNavigate } from 'react-router-dom';
 
-const CustomCursor = () => {
+const CustomCursor = ({hoverElements}) => {
 
   const mouseContainer = useRef(null);
   
@@ -13,6 +13,7 @@ const CustomCursor = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+
     const handleMouseMove = ev => {
         if (mouseContainer.current) {
             const {clientX, clientY} = ev;
@@ -23,18 +24,17 @@ const CustomCursor = () => {
      }
 
     //hovering
-    const hoverElements = document.querySelectorAll('button, a');
     const handleMouseEnter = () => {
         if (mouseContainer.current) {
-            mouseContainer.current.style.width = '56px';
-            mouseContainer.current.style.height = '56px';
+            mouseContainer.current.style.width = '36px';
+            mouseContainer.current.style.height = '36px';
         }
     }
     
     const handleMouseLeave = () => {
         if (mouseContainer.current) {
-            mouseContainer.current.style.width = '72px';
-            mouseContainer.current.style.height = '72px';
+            mouseContainer.current.style.width = '56px';
+            mouseContainer.current.style.height = '56px';
         }
     }
 
@@ -65,38 +65,42 @@ const CustomCursor = () => {
     window.addEventListener('mousemove', handleMouseMove);
     // window.addEventListener('scroll', handleScroll);
     // window.addEventListener('wheel', handleMouseWheel);
-    hoverElements.forEach(el => {
-        el.addEventListener('mouseenter', handleMouseEnter);
-        el.addEventListener('mouseleave', handleMouseLeave);
-    })
+    if (hoverElements) {
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', handleMouseEnter);
+            el.addEventListener('mouseleave', handleMouseLeave);
+        })
+    }
 
     return () => {
         window.removeEventListener('mousemove', handleMouseMove);
         // window.removeEventListener('scroll', handleScroll);
         // window.removeEventListener('wheel', handleMouseWheel);
-        hoverElements.forEach(el => {
-            el.removeEventListener('mouseenter', handleMouseEnter);
-            el.removeEventListener('mouseleave', handleMouseLeave);
-        })
+        if (hoverElements) {
+            hoverElements.forEach(el => {
+                el.removeEventListener('mouseenter', handleMouseEnter);
+                el.removeEventListener('mouseleave', handleMouseLeave);
+            })
+        }
     }
 
-  }, [isBottom])
+  }, [isBottom, hoverElements])
 
   return (
-    <CursorContainer ref={mouseContainer} style={{background: `linear-gradient(0deg, rgba(54,54,54,1) 0%, rgba(54,54,54,1) ${fillPercent}%, rgba(54,54,54,0) ${fillPercent}%)`}}>
+    <CursorContainer ref={mouseContainer} className='custom-cursor'>
         <CursorInnerText>Sample</CursorInnerText>
     </CursorContainer>
   )
 }
 
 const CursorContainer = styled.div`
-    width: 72px;
-    height: 72px;
+    width: 56px;
+    height: 56px;
     border-radius: 100%;
     border: 3px solid ${getTheme('mainColor')};
     position: fixed;
     z-index: 100;
-    background: ${getTheme('mainColor')};
+    background: transparent;
     transform: translate(-50%, -50%);
     pointer-events: none;
     transition: width 0.15s ease-out, height 0.15s ease-out, background 0.15s cubic-bezier(0.6, 0.01, 0.05, 0.95);

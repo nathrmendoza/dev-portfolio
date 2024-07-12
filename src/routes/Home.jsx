@@ -6,7 +6,7 @@ import TextTransition, { presets } from 'react-text-transition'
 import { MainContainer, MediumWrapper } from "../styles/ThemeContainers";
 import PageAnimWrapper from "../utils/PageAnimWrapper";
 
-const HEROTEXT = ['signer', 'veloper', 'v Ops', '_dust'];
+const HEROTEXT = ['veloper', 'signer', 'ployer', 'v Ops', '_dust2'];
 
 const Home = () => {  const [textIndex, setTextIndex] = useState(0);
   

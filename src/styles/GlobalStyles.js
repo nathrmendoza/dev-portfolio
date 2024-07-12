@@ -102,11 +102,11 @@ export const GlobalStyles = createGlobalStyle`
     }
     
     ::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 6px #ccc;
+        box-shadow: inset 0 0 6px ${getTheme('trackColor')};
     }
     
     ::-webkit-scrollbar-thumb {
-        background-color: #9F9F9F;
+        background-color: ${getTheme('thumbColor')};
     }
     /* END GLOBAL STYLES */
 

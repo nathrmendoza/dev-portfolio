@@ -8,6 +8,11 @@ export const MainContainer = styled.div`
     min-height: calc(100vh - 155px - 72px);
 `
 
+export const FullPageWrapper = styled.div`
+    width: 100%;
+    max-width: 100%;
+`
+
 export const LargeWrapper = styled.div`
     width: 100%;
     max-width: 1440px;

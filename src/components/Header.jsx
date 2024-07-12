@@ -17,7 +17,7 @@ import customNavigation from "../hooks/customNavigation"
 
 import { motion } from 'framer-motion'
 
-const animations = {
+const gradientVariants = {
     initial: {opacity: 0 },
     animate: {opacity: 1,
         transition: {
@@ -31,7 +31,27 @@ const animations = {
     },
 }
 
-const Header = ({toggleThemeFunc, themeColor}) => {
+const gradientWrapperVariants = {
+    initial: {
+        opacity: 0
+    }, 
+    animate: {
+        opacity: 1,
+        transition: {
+            duration: 0.6,
+            delay: 1
+        }
+    },
+    final: {
+        opacity: 0,
+        transition: {
+            duration: 0.6,
+            delay: 0.6
+        }
+    }
+}
+
+const Header = ({toggleThemeFunc, themeColor, isWorkSingle}) => {
     
     const defaultSocMed = {
         width: '30px',
@@ -43,11 +63,16 @@ const Header = ({toggleThemeFunc, themeColor}) => {
 
     return (
         <HeaderMain>
-            {
-                themeColor === 'light'
-                ? <BackgroundLight variants={animations} initial="initial" animate="animate" exit="final"/>
-                : <BackgroundDark variants={animations} initial="initial" animate="animate" exit="final"/>
-            }
+            {!isWorkSingle && <motion.div
+                variants={gradientWrapperVariants} 
+                initial="initial"
+                animate="animate"
+                exit="final" >
+                { themeColor === 'light'
+                    ? <BackgroundLight variants={gradientVariants} initial="initial" animate="animate" exit="final"/>
+                    : <BackgroundDark variants={gradientVariants} initial="initial" animate="animate" exit="final"/> 
+                }
+            </motion.div>}
             <MainNoHeight>    
                 <FlexContainer>
                     <LogoContainer onClick={() => customLinkTo('/')}>

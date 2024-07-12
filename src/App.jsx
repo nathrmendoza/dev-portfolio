@@ -38,17 +38,31 @@ function App() {
   }
 
   const location = useLocation();
+  const [workPage, setWorkPage] = useState(false);
+
 
   useEffect(() => {
     //event listener for cursor hoverables
-    setHoverElements(document.querySelectorAll('button, a'))
+    setHoverElements(document.querySelectorAll('button, a'));
+    const isWorkSinglePage = /^\/works\/[^\/]+$/.test(location.pathname);
+    setWorkPage(isWorkSinglePage);
+
   }, [location])
+
+  const workReadableTheme = (theme) => {
+    if (theme === '') return;
+    console.log(theme);
+    setCurrentTheme(theme);
+  }
 
   return (
     <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles/>
       <CustomCursor hoverElements={hoverElements}/>
-      <Header toggleThemeFunc={toggleTheme} themeColor={currentTheme}/>
+      <Header 
+        toggleThemeFunc={toggleTheme} 
+        themeColor={currentTheme} 
+        isWorkSingle={workPage} />
       <TransitionProvider>
         <AnimatePresence>
             <Routes location={location} key={location.pathname}>
@@ -56,7 +70,7 @@ function App() {
               <Route path="/background" element={<Background themeColor={currentTheme}/>} />
               <Route path="/toolkit" element={<Toolkit/>} />
               <Route path="/works" element={<Works/>} />
-              <Route path="/works/:slug" element={<WorksSingle/>} />
+              <Route path="/works/:slug" element={<WorksSingle updateThemeFunc={workReadableTheme}/>} />
               <Route path="/contact" element={<Contact/>} />
               <Route path="*" element={<NotFound/>}/>
             </Routes>

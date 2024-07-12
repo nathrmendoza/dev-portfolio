@@ -6,7 +6,7 @@
         "description": "Built a Shopify theme for Laika, a film animation studio. Utilized Shopiy liquid, Sass and Javascript alongside JQuery for the build.",
         "siteLink": "https://shop.laika.com/",
         "primaryColor": "#000000",
-        "textColor": "#FFFFFF",
+        "theme": "dark",
         "techStack": [
             {
                 "label": "HTML",
@@ -41,7 +41,7 @@
                 "iconName": "FaShopify"
             }
         ],
-        "photos":["laika-full.jpg"],
+        "photos":["assets/images/laika-full.jpg"],
         "mobilePhotos": []
     },
     {
@@ -51,7 +51,7 @@
         "description": "Built and managed a Shopify store for Cobram Estate Olive Oil. Built the theme, managed/configured complex solutions for subscriptions, built some internal apps using remix.",
         "siteLink": "https://cobramestate.com.au/",
         "primaryColor": "#EDCB7B",
-        "textColor": "#202023",
+        "theme": "light",
         "techStack": [
             {
                 "label": "HTML",
@@ -94,7 +94,7 @@
                 "iconName": "FaShopify"
             }
         ],
-        "photos":["cobram-full.jpg"],
+        "photos":["assets/images/cobram-full.jpg"],
         "mobilePhotos": []
     },
     {
@@ -104,7 +104,7 @@
         "description": "Built a Wordpress site for an Australian insurance company, tech used was Php, Sass and Javascript with Jquery.",
         "siteLink": "https://www.bruce.com.au/",
         "primaryColor": "#4C8FCD",
-        "textColor": "#FFFFFF",
+        "theme": "dark",
         "techStack": [
             {
                 "label": "HTML",
@@ -139,7 +139,7 @@
                 "iconName": "FaWordpress"
             }
         ],
-        "photos":["bruce-full.jpg"],
+        "photos":["assets/images/bruce-full.jpg"],
         "mobilePhotos": []
     },
     {
@@ -149,7 +149,7 @@
         "description": "Built a Shopify store for an New Zealand cosmetic company, tech used was Liquid, Sass and Javascript with Jquery.",
         "siteLink": "https://wildkiwihearts.com/",
         "primaryColor": "#355755",
-        "textColor": "#FFFFFF",
+        "theme": "dark",
         "techStack": [
             {
                 "label": "HTML",
@@ -184,7 +184,7 @@
                 "iconName": "FaShopify"
             }
         ],
-        "photos":["wkhearts-full.jpg"],
+        "photos":["assets/images/wkhearts-full.jpg"],
         "mobilePhotos": []
     },
     {
@@ -194,7 +194,7 @@
         "description": "Built a Shopify store for an international baseball, golf and softball belts supplier, tech used was Liquid, Sass and Javascript with Jquery.",
         "siteLink": "https://coreenergybelt.com/",
         "primaryColor": "#B6987D",
-        "textColor": "#FFFFFF",
+        "theme": "#dark",
         "techStack": [
             {
                 "label": "HTML",
@@ -229,7 +229,7 @@
                 "iconName": "FaShopify"
             }
         ],
-        "photos":["cebelt-full.jpg"],
+        "photos":["assets/images/cebelt-full.jpg"],
         "mobilePhotos": []
     },
     {
@@ -239,7 +239,7 @@
         "description": "Collaborated building a Craft CMS site for a Washington based catholic conference. Site was built with Craft which used twig templating also utilized Sass and Javascript.",
         "siteLink": "https://www.wacatholics.org/",
         "primaryColor": "#0075F2",
-        "textColor": "#FFFFFF",
+        "theme": "dark",
         "techStack": [
             {
                 "label": "HTML",
@@ -274,7 +274,7 @@
                 "iconName": "SiCraftcms"
             }
         ],
-        "photos":["wscc-full.jpg"],
+        "photos":["assets/images/wscc-full.jpg"],
         "mobilePhotos": []
     },
     {
@@ -284,7 +284,7 @@
         "description": "Built a Wordpress site for a real estate company in the Philippines. Site utilized Php, Sass and Javascript along with jQuery.",
         "siteLink": "https://stalucialand.com.ph/",
         "primaryColor": "#0D4C33",
-        "textColor": "#FFFFFF",
+        "theme": "dark",
         "techStack": [
             {
                 "label": "HTML",
@@ -319,7 +319,7 @@
                 "iconName": "FaWordpress"
             }
         ],
-        "photos":["sli-full.jpg"],
+        "photos":["assets/images/sli-full.jpg"],
         "mobilePhotos": []
     },
     {
@@ -329,7 +329,7 @@
         "description": "Collaborated building a Wordpress site for a tv advertising company in New York. Site utilized Php, Sass and Javascript along with jQuery.",
         "siteLink": "https://cadent.tv/insights/",
         "primaryColor": "#23EBF0",
-        "textColor": "#000000",
+        "theme": "light",
         "techStack": [
             {
                 "label": "HTML",
@@ -364,7 +364,7 @@
                 "iconName": "FaWordpress"
             }
         ],
-        "photos":["cadent-full.jpg"],
+        "photos":["assets/images/cadent-full.jpg"],
         "mobilePhotos": []
     },
     {
@@ -374,7 +374,7 @@
         "description": "Built a Wordpress site for a manufacturer and distributor of vermicelli. Site utilized Php, Sass and Javascript along with jQuery.",
         "siteLink": "https://sapporoproducts.com/",
         "primaryColor": "#36A0E0",
-        "textColor": "#FFFFFF",
+        "theme": "dark",
         "techStack": [
             {
                 "label": "HTML",
@@ -409,7 +409,7 @@
                 "iconName": "FaWordpress"
             }
         ],
-        "photos":["sapp-full.jpg"],
+        "photos":["assets/images/sapp-full.jpg"],
         "mobilePhotos": []
     }
 ]

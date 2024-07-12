@@ -13,7 +13,7 @@ import { getTheme } from '../styles/ThemeUtils'
 import LogoAnimWrapper from '../utils/LogoAnimWrapper'
 
 import Navigation from './Navigation'
-import { Link } from 'react-router-dom'
+import customNavigation from "../hooks/customNavigation"
 
 import { motion } from 'framer-motion'
 
@@ -39,6 +39,8 @@ const Header = ({toggleThemeFunc, themeColor}) => {
         color: themeColor === 'light' ? '#363636' : '#FFFFFF'
     }
 
+    const customLinkTo = customNavigation();
+
     return (
         <HeaderMain>
             {
@@ -48,15 +50,13 @@ const Header = ({toggleThemeFunc, themeColor}) => {
             }
             <MainNoHeight>    
                 <FlexContainer>
-                    <LogoContainer>
-                        <Link to="/">
-                            <LogoAnimWrapper>
-                                {themeColor === 'light' 
-                                    ? <DarkLogo width="125" height="71" />
-                                    : <LightLogo width="125" height="71" />
-                                }
-                            </LogoAnimWrapper>
-                        </Link>
+                    <LogoContainer onClick={() => customLinkTo('/')}>
+                        <LogoAnimWrapper>
+                            {themeColor === 'light' 
+                                ? <DarkLogo width="125" height="71" />
+                                : <LightLogo width="125" height="71" />
+                            }
+                        </LogoAnimWrapper>
                     </LogoContainer>
                     <NavContainer>
                         <Navigation />
@@ -118,10 +118,12 @@ const NavContainer = styled.div`
     transform: translate(-50%, -50%);
 `
 
-const LogoContainer = styled.div`
+const LogoContainer = styled.button`
     position: relative;
     width: 125px;
     height: 71px;
+    background: none;
+    border: none;
 `
 
 const CustomLinkedin = styled(LinkedinCircle)`

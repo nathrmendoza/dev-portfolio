@@ -1,0 +1,27 @@
+
+/* START FONTS */
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    src: url('./assets/fonts/PlayfairDisplay-VariableFont.woff2') format('woff2'),
+            url('./assets/fonts/PlayfairDisplay-VariableFont.woff') format('woff');
+}
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: italic;
+    src: url('./assets/fonts/PlayfairDisplay-Italic-VariableFont.woff2') format('woff2'),
+            url('./assets/fonts/PlayfairDisplay-Italic-VariableFont.woff') format('woff');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    src: url('./assets/fonts/OpenSans-VariableFont.woff2') format('woff2'),
+            url('./assets/fonts/OpenSans-VariableFont.woff') format('woff');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    src: url('./assets/fonts/OpenSans-Italic-VariableFont.woff2') format('woff2'),
+            url('./assets/fonts/OpenSans-Italic-VariableFont.woff') format('woff');
+}
+/* END FONTS */

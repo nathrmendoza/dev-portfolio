@@ -1,7 +1,7 @@
 
 export const defaults = {
-    serif: "playfair",
-    sansSerif: "opensans",
+    serif: "Playfair Display, serif",
+    sansSerif: "Open Sans, sans-serif",
     borderColor: "#DFDFDF",
     trackColor: "#CCCCCC",
     thumbColor: "#9F9F9F"

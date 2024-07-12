@@ -3,19 +3,17 @@ import styled from 'styled-components';
 import { WorkItemHeading } from '../styles/Typography';
 import { getTheme } from '../styles/ThemeUtils';
 import { Link } from 'react-router-dom';
+import customNavigation from '../hooks/customNavigation';
 
 const WorkItem = ({work}) => {
     const {
         name,
-        thumbnail,
-        description,
-        siteLink,
-        primaryColor,
-        textColor,
-        techStack,
-        photos,
-        mobilePhotos
+        slug,
+        thumbnail
     } = work;
+
+    const customLinkTo = customNavigation();
+
   return (
     <SlideWrapper>
         <ImageContainer>
@@ -23,7 +21,7 @@ const WorkItem = ({work}) => {
         </ImageContainer>
         <HoverContainer>
             <WorkItemHeading>{name}</WorkItemHeading>
-            <ViewWorkCTA><Link to="/works">View Work</Link></ViewWorkCTA>
+            <ViewWorkCTA onClick={() => customLinkTo(`/works/${slug}`)}>View Work</ViewWorkCTA>
         </HoverContainer>
     </SlideWrapper>
   )
@@ -69,10 +67,12 @@ const HoverContainer = styled.div`
     }
 `
 
-const ViewWorkCTA = styled.span`
+const ViewWorkCTA = styled.button`
+    border: none;
+    background: none;
     font-size: 32px;
     line-height: 1;
-    font-weight: 600;
+    font-weight: 500;
     font-style: italic;
     color: #FFF;
 	text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -81,6 +81,8 @@ const ViewWorkCTA = styled.span`
     display: inline-block;
     position: relative;
     transition: all 0.3s ease-out;
+    padding-bottom: 36px;
+    font-family: ${getTheme('serif')};
 
     &:after {
         content: '';
@@ -101,13 +103,6 @@ const ViewWorkCTA = styled.span`
         &:after {
             transform: translateX(-50%) translateY(8px);
         }
-    }
-    
-    a {
-        text-decoration: none;
-        color: inherit;
-        padding-bottom: 36px;
-        display: inline-block;
     }
 `
 

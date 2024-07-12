@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   Route,
   Routes,
@@ -22,6 +22,8 @@ import { useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
+import WorksSingle from './routes/WorksSingle';
+import { TransitionProvider } from './contexts/PageTransitionContext';
 
 const themePref = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -35,7 +37,7 @@ function App() {
     setCurrentTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
   }
 
-  const location = useLocation(); 
+  const location = useLocation();
 
   useEffect(() => {
     //event listener for cursor hoverables
@@ -47,16 +49,19 @@ function App() {
       <GlobalStyles/>
       <CustomCursor hoverElements={hoverElements}/>
       <Header toggleThemeFunc={toggleTheme} themeColor={currentTheme}/>
-      <AnimatePresence>
-        <Routes location={location} key={location.pathname}>
-          <Route index element={<Home />} />
-          <Route path="/background" element={<Background themeColor={currentTheme}/>} />
-          <Route path="/toolkit" element={<Toolkit/>} />
-          <Route path="/works" element={<Works/>} />
-          <Route path="/contact" element={<Contact/>} />
-          <Route path="*" element={<NotFound/>}/>
-        </Routes>
-      </AnimatePresence>
+      <TransitionProvider>
+        <AnimatePresence>
+            <Routes location={location} key={location.pathname}>
+              <Route index element={<Home />} />
+              <Route path="/background" element={<Background themeColor={currentTheme}/>} />
+              <Route path="/toolkit" element={<Toolkit/>} />
+              <Route path="/works" element={<Works/>} />
+              <Route path="/works/:slug" element={<WorksSingle/>} />
+              <Route path="/contact" element={<Contact/>} />
+              <Route path="*" element={<NotFound/>}/>
+            </Routes>
+        </AnimatePresence>
+      </TransitionProvider>
       <Footer/>
     </ThemeProvider>
   )

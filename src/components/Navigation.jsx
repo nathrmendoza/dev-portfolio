@@ -1,23 +1,24 @@
-import { useEffect, useRef, useState } from "react"
-import { NavLink, useLocation } from "react-router-dom"
 import styled from "styled-components"
 import { getTheme } from "../styles/ThemeUtils"
+import customNavigation from "../hooks/customNavigation"
 
 const Navigation = () => {
+
+    const customLinkTo = customNavigation();
 
     return (
         <Nav>
             <LinksContainer >
                 <li><CustomLink 
-                    to="/" >About me</CustomLink></li>
+                    onClick={() => customLinkTo('/')} >About me</CustomLink></li>
                 <li><CustomLink 
-                    to="/background" >Background</CustomLink></li>
+                    onClick={() => customLinkTo('/background')} >Background</CustomLink></li>
                 <li><CustomLink 
-                    to="/toolkit" >Toolkit</CustomLink></li>
+                    onClick={() => customLinkTo('/toolkit')} >Toolkit</CustomLink></li>
                 <li><CustomLink 
-                    to="/works" >Works</CustomLink></li>
+                    onClick={() => customLinkTo('/works')} >Works</CustomLink></li>
                 <li><CustomLink 
-                    to="/contact" >Contact</CustomLink></li>
+                    onClick={() => customLinkTo('/contact')} >Contact</CustomLink></li>
             </LinksContainer>
         </Nav>
     )
@@ -37,8 +38,10 @@ const LinksContainer = styled.ul`
     column-gap: 42px;
 `
 
-const CustomLink = styled(NavLink)`
+const CustomLink = styled.button`
     text-decoration: none;
+    border: none;
+    background: none;
     color: ${getTheme('mainColor')};
     font-size: 24px;
     line-height: 1;

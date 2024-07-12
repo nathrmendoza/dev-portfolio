@@ -35,6 +35,7 @@ export const GlobalStyles = createGlobalStyle`
     }
     body {
         line-height: 1;
+        overflow-x: hidden;
     }
     ol, ul {
         list-style: none;
@@ -53,33 +54,6 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     /* END RESET CSS */
-
-    /* START FONTS */
-    @font-face {
-        font-family: 'playfair';
-        font-style: normal;
-        src: url('./assets/fonts/PlayfairDisplay-VariableFont_wght.woff2') format('woff2'),
-             url('./assets/fonts/PlayfairDisplay-VariableFont_wght.woff') format('woff');
-    }
-    @font-face {
-        font-family: 'playfair';
-        font-style: italic;
-        src: url('./assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.woff2') format('woff2'),
-             url('./assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.woff') format('woff');
-    }
-    @font-face {
-        font-family: 'opensans';
-        font-style: normal;
-        src: url('./assets/fonts/OpenSans-VariableFont_wdth,wght.woff2') format('woff2'),
-             url('./assets/fonts/OpenSans-VariableFont_wdth,wght.woff') format('woff');
-    }
-    @font-face {
-        font-family: 'opensans';
-        font-style: italic;
-        src: url('./assets/fonts/OpenSans-Italic-VariableFont_wdth,wght.woff2') format('woff2'),
-             url('./assets/fonts/OpenSans-Italic-VariableFont_wdth,wght.woff') format('woff');
-    }
-    /* END FONTS */
 
     /* GLOBAL STYLES */
     * {

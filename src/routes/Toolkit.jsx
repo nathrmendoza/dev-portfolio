@@ -43,47 +43,47 @@ const Toolkit = () => {
                     <Paragraph style={{textAlign: 'center'}}>
                     Below I've listed the technologies utilized in my projects. Gained proficiency using these tools through experience and interest in adapting to project quality standards. 
                     </Paragraph>
-                        <FlexWrapper style={{marginTop: '56px'}}>
-                            <ToolColumns>
-                                { toolkitData[0].map((tool, index) => (
-                                    <motion.li 
-                                        key={tool.label}
-                                        variants={toolPopVariants}
-                                        initial="initial"
-                                        animate={startAnimation ? "animate" : "initial"}
-                                        custom={index}
-                                    >
-                                        <ToolItem tool={tool}/>
-                                    </motion.li>
-                                )) }
-                            </ToolColumns>
-                            <ToolColumns>
-                                { toolkitData[1].map((tool, index) => (
-                                    <motion.li 
-                                        key={tool.label}
-                                        variants={toolPopVariants}
-                                        initial="initial"
-                                        animate={startAnimation ? "animate" : "initial"}
-                                        custom={index}
-                                    >
-                                        <ToolItem tool={tool}/>
-                                    </motion.li>
-                                )) }
-                            </ToolColumns>
-                            <ToolColumns className="full">
-                                { toolkitData[2].map((tool, index) => (
-                                    <motion.li 
-                                        key={tool.label}
-                                        variants={toolPopVariants}
-                                        initial="initial"
-                                        animate={startAnimation ? "animate" : "initial"}
-                                        custom={index}
-                                    >
-                                        <ToolItem tool={tool}/>
-                                    </motion.li>
-                                )) }
-                            </ToolColumns>
-                        </FlexWrapper>
+                    <FlexWrapper style={{marginTop: '56px'}}>
+                        <ToolColumns>
+                            { toolkitData[0].map((tool, index) => (
+                                <motion.li 
+                                    key={tool.label}
+                                    variants={toolPopVariants}
+                                    initial="initial"
+                                    animate={startAnimation ? "animate" : "initial"}
+                                    custom={index}
+                                >
+                                    <ToolItem tool={tool}/>
+                                </motion.li>
+                            )) }
+                        </ToolColumns>
+                        <ToolColumns>
+                            { toolkitData[1].map((tool, index) => (
+                                <motion.li 
+                                    key={tool.label}
+                                    variants={toolPopVariants}
+                                    initial="initial"
+                                    animate={startAnimation ? "animate" : "initial"}
+                                    custom={index}
+                                >
+                                    <ToolItem tool={tool}/>
+                                </motion.li>
+                            )) }
+                        </ToolColumns>
+                        <ToolColumns className="full">
+                            { toolkitData[2].map((tool, index) => (
+                                <motion.li 
+                                    key={tool.label}
+                                    variants={toolPopVariants}
+                                    initial="initial"
+                                    animate={startAnimation ? "animate" : "initial"}
+                                    custom={index}
+                                >
+                                    <ToolItem tool={tool}/>
+                                </motion.li>
+                            )) }
+                        </ToolColumns>
+                    </FlexWrapper>
                 </InnerWrapper>
                 </PageAnimWrapper>
             </MainContainer>

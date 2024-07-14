@@ -101,5 +101,13 @@ export const GlobalStyles = createGlobalStyle`
             transform: rotate(-360deg);
         }
     }
+    @keyframes rotating {
+        0% {
+            transform: rotate(0deg)
+        }
+        100% {
+            transform: rotate(360deg)
+        }
+    }
     /* END ANIMATIONS */
 `

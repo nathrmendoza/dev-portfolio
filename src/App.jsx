@@ -31,6 +31,7 @@ function App() {
   // set initial state to themePref.matches ? 'dark' : 'light' if i want to match user os theme
   const [currentTheme, setCurrentTheme] = useState('light');
   const [hoverElements, setHoverElements] = useState([]);
+  const [themeToggle, setThemeToggle] = useState(true);
   
   const toggleTheme = e => {
     e.preventDefault();
@@ -47,11 +48,17 @@ function App() {
     const isWorkSinglePage = /^\/works\/[^\/]+$/.test(location.pathname);
     setWorkPage(isWorkSinglePage);
 
+    //if work single page disable header theme toggle
+    if (isWorkSinglePage) {
+      setThemeToggle(false)
+    } else {
+      setThemeToggle(true);
+    }
+
   }, [location])
 
   const workReadableTheme = (theme) => {
     if (theme === '') return;
-    console.log(theme);
     setCurrentTheme(theme);
   }
 
@@ -61,6 +68,7 @@ function App() {
       <CustomCursor hoverElements={hoverElements}/>
       <Header 
         toggleThemeFunc={toggleTheme} 
+        themeToggleEnabled={themeToggle}
         themeColor={currentTheme} 
         isWorkSingle={workPage} />
       <TransitionProvider>

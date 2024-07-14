@@ -66,15 +66,14 @@ const WorksPageAnimWrapper = ({children, mainColor}) => {
             backgroundColor: mainColor
         }}
     />
-    <MainContainer>
-        <InnerWrapper
-            variants={innerWrapperVariants}
-            initial="initial"
-            animate="animate"
-            exit="final" >
-            {children}
-        </InnerWrapper>
-    </MainContainer>
+    <motion.div
+        variants={innerWrapperVariants}
+        initial="initial"
+        animate="animate"
+        exit="final"
+        style={{zIndex: 1, position: 'relative'}} >
+        {children}
+    </motion.div>
     </>
   )
 }
@@ -86,16 +85,6 @@ const CircleBackground = styled(motion.div)`
     width: 0;
     height: 0;
     border-radius: 100%;
-`
-
-const InnerWrapper = styled(motion.div)`
-    width: 100%;
-    max-width: 995px;
-    margin: 0 auto;
-    display: block;
-    z-index: 1;
-    position: relative;
-    
 `
 
 export default WorksPageAnimWrapper

@@ -1,22 +1,14 @@
 import React from 'react'
-import * as FaIcons from 'react-icons/fa'
-import * as SiIcons from 'react-icons/si'
 import styled from 'styled-components'
 import { getTheme } from '../styles/ThemeUtils'
+import IconComponent from '../hooks/getIcon';
 
-const iconSets = {
-    Fa: FaIcons,
-    Si: SiIcons
-}
-
-const ToolItem = ({tool}) => {
+const ToolItem = ({tool, className}) => {
     const {label, iconName} = tool;
-    const prefix = iconName.slice(0, 2);
-    const IconComponent = iconSets[prefix]?.[iconName];
 
     return (
-        <ToolItemWrapper>
-            <IconComponent/>
+        <ToolItemWrapper className={className}>
+            <IconComponent iconName={iconName}/>
             <ToolLabel>{label}</ToolLabel>
         </ToolItemWrapper>
     )

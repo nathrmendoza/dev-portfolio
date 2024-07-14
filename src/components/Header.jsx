@@ -51,7 +51,7 @@ const gradientWrapperVariants = {
     }
 }
 
-const Header = ({toggleThemeFunc, themeColor, isWorkSingle}) => {
+const Header = ({toggleThemeFunc, themeColor, isWorkSingle, themeToggleEnabled}) => {
     
     const defaultSocMed = {
         width: '30px',
@@ -93,7 +93,7 @@ const Header = ({toggleThemeFunc, themeColor, isWorkSingle}) => {
                         <SocMedAnchor href="https://github.com/nathrmendoza" className='socLink' target="_blank" rel="noopener noreferrer">
                             <FaGithub style={defaultSocMed}/>
                         </SocMedAnchor>
-                        <ThemeToggleButton onClick={e => {toggleThemeFunc(e)}}>
+                        <ThemeToggleButton onClick={e => {toggleThemeFunc(e)}} disabled={!themeToggleEnabled}>
                             <ThemeIconsContainer className={themeColor}>
                                 <MdSunny className='sun'/>
                                 <IoMdMoon className='moon'/>
@@ -185,6 +185,11 @@ const ThemeToggleButton = styled.button`
     height: 36px;
     overflow: hidden;
     margin-left: 10px;
+    transition: all 0.3s cubic-bezier(0.6, 0.01, 0.05, 0.95);
+
+    &:disabled {
+        opacity: 0.45;
+    }
 `
 
 const ThemeIconsContainer = styled.div`

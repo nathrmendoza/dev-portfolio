@@ -194,7 +194,7 @@
         "description": "Built a Shopify store for an international baseball, golf and softball belts supplier, tech used was Liquid, Sass and Javascript with Jquery.",
         "siteLink": "https://coreenergybelt.com/",
         "primaryColor": "#B6987D",
-        "theme": "#dark",
+        "theme": "dark",
         "techStack": [
             {
                 "label": "HTML",

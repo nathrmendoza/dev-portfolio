@@ -21,20 +21,45 @@ const WorkItem = ({work}) => {
             <Image src={thumbnail} alt={`${name} Thumbnail`} />
         </ImageContainer>
         <HoverContainer>
-            <WorkItemHeading style={{color: '#FFFFFF'}}>{name}</WorkItemHeading>
-            <ViewWorkCTA onClick={() => customLinkTo(`/works/${slug}`)}>View Work</ViewWorkCTA>
+            <HoverHeading>{name}</HoverHeading>
+            <CustomViewWorkCTA onClick={() => customLinkTo(`/works/${slug}`)}>View Work</CustomViewWorkCTA>
         </HoverContainer>
     </SlideWrapper>
   )
 }
 
+const HoverHeading = styled(WorkItemHeading)`
+    color: #FFFFFF!important;
+    @media only screen and (max-width: 1080px) {
+        font-size: 36px;
+    }
+
+	@media only screen and (max-width: 940px) {
+		font-size: 32px;
+		margin: 0 0 30px;
+	}
+`
+
+const CustomViewWorkCTA = styled(ViewWorkCTA)`
+    color: #FFF!important;
+    &:after {
+        background-color: #FFF!important;
+    }
+`
+
 const SlideWrapper = styled.div`
     margin: 0 31px;
     position: relative;
+    @media only screen and (max-width: 940px) {
+        margin: 0 20px;
+    }
 `
 
 const ImageContainer = styled.div`
     border: 10px solid ${getTheme('borderColor')};
+    @media only screen and (max-width: 640px) {
+        border-width: 5px;
+    }
 `
 
 const Image = styled.img`
@@ -45,6 +70,16 @@ const Image = styled.img`
     position: relative;
     display: block;
     user-select: none;
+
+    @media only screen and (max-width: 1080px) {
+        max-width: 500px;
+    }
+    @media only screen and (max-width: 768px) {
+        max-width: 65vw;
+    }
+    @media only screen and (max-width: 640px) {
+        max-width: 100%;
+    }
 `
 
 const HoverContainer = styled.div`
@@ -62,8 +97,9 @@ const HoverContainer = styled.div`
     z-index: 1;
     opacity: 0;
     transition: opacity 0.6s cubic-bezier(0.6, 0.01, 0.05, 0.95);
+    padding: 24px;
 
-    &:hover {
+    &:hover, &:focus {
         opacity: 1;
     }
 `

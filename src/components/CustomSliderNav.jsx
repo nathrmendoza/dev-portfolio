@@ -87,6 +87,10 @@ const CSNavWrapper = styled.div`
     position: relative;
     padding: 2px 0;
     margin-bottom: 4px;
+
+    @media only screen and (max-width: 725px) {
+        display: none;
+    }
 `
 
 const CSNavTrack = styled.div`
@@ -105,7 +109,7 @@ const CSNavThumb = styled(motion.button)`
     user-select: none;
     border: none;
 
-    &:hover {
+    &:hover, &:focus {
         height: 14px;
         top: calc(50% - 7px);
     }

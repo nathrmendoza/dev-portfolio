@@ -3,6 +3,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import useScrollToTop from './hooks/scrollReset';
 
 import { ThemeProvider } from 'styled-components'
 import { GlobalStyles } from './styles/GlobalStyles'
@@ -10,7 +11,6 @@ import { lightTheme, darkTheme } from './styles/theme'
 
 //routes
 import NotFound from './notfound';
-import Root from './routes/Root';
 import Home from './routes/Home';
 import Background from './routes/Background';
 import Toolkit from './routes/Toolkit';
@@ -25,13 +25,15 @@ import CustomCursor from './components/CustomCursor';
 import WorksSingle from './routes/WorksSingle';
 import { TransitionProvider } from './contexts/PageTransitionContext';
 
-const themePref = window.matchMedia("(prefers-color-scheme: dark)");
-
 function App() {
-  // set initial state to themePref.matches ? 'dark' : 'light' if i want to match user os theme
   const [currentTheme, setCurrentTheme] = useState('light');
   const [hoverElements, setHoverElements] = useState([]);
-  const [themeToggle, setThemeToggle] = useState(true);
+
+  const isTouch = window.matchMedia("(any-pointer: coarse)").matches;
+
+  
+  //reset scroll
+  useScrollToTop();
   
   const toggleTheme = e => {
     e.preventDefault();
@@ -39,21 +41,15 @@ function App() {
   }
 
   const location = useLocation();
-  const [workPage, setWorkPage] = useState(false);
+  const [isWorkSingle, setIsWorkSingle] = useState(false);
 
 
   useEffect(() => {
     //event listener for cursor hoverables
     setHoverElements(document.querySelectorAll('button, a'));
-    const isWorkSinglePage = /^\/works\/[^\/]+$/.test(location.pathname);
-    setWorkPage(isWorkSinglePage);
 
-    //if work single page disable header theme toggle
-    if (isWorkSinglePage) {
-      setThemeToggle(false)
-    } else {
-      setThemeToggle(true);
-    }
+    const checkPathForSingle = /^\/works\/[^\/]+$/.test(location.pathname);
+    setIsWorkSingle(checkPathForSingle);
 
   }, [location])
 
@@ -65,12 +61,13 @@ function App() {
   return (
     <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles/>
-      <CustomCursor hoverElements={hoverElements}/>
+      {
+        !isTouch && <CustomCursor hoverElements={hoverElements}/>
+      }
       <Header 
         toggleThemeFunc={toggleTheme} 
-        themeToggleEnabled={themeToggle}
         themeColor={currentTheme} 
-        isWorkSingle={workPage} />
+        isWorkSingle={isWorkSingle} />
       <TransitionProvider>
         <AnimatePresence>
             <Routes location={location} key={location.pathname}>
@@ -84,7 +81,7 @@ function App() {
             </Routes>
         </AnimatePresence>
       </TransitionProvider>
-      <Footer/>
+      <Footer isWorkSingle={isWorkSingle}/>
     </ThemeProvider>
   )
 }

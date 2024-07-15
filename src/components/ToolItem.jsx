@@ -25,7 +25,13 @@ const ToolItemWrapper = styled.div`
         height: auto;
         margin-right: 16px;
         color: ${getTheme('mainColor')};
+        
+        @media only screen and (max-width: 1440px) {
+            width: 26px;
+            height: auto;
+        }
     }
+
 `
 const ToolLabel = styled.p`
     font-family: ${getTheme('sansSerif')};
@@ -34,6 +40,10 @@ const ToolLabel = styled.p`
     line-height: 24px;
     font-weight: 600;
     margin: 0;
+
+    @media only screen and (max-width: 940px) {
+        font-size: 16px;
+    }
 `
 
 export default ToolItem

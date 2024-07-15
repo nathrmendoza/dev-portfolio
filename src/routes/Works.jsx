@@ -6,14 +6,14 @@ import 'slick-carousel/slick/slick-theme.css'
 
 import { FiChevronsLeft, FiChevronsRight } from 'react-icons/fi'
 
-import { FullPageWrapper } from "../styles/ThemeContainers"
+import { FullPageWrapper, MainContainer } from "../styles/ThemeContainers"
 import { Paragraph, SectionHeading } from "../styles/Typography"
 import PageAnimWrapper from "../utils/PageAnimWrapper"
 
 import { NarrowWrapper } from "../styles/ThemeContainers"
 import WorkItem from "../components/WorkItem"
 import CustomSliderNav from "../components/CustomSliderNav"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { getTheme } from "../styles/ThemeUtils"
 
 import worksData from '../temp/worksData.json'
@@ -46,6 +46,25 @@ const Works = () => {
             setCurrentSlide(nextSlide);
         }
     }
+    
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+
+        const checkMobile = () => {
+            if (window.innerWidth < 640) {
+                setIsMobile(true);
+            } else {
+                setIsMobile(false);
+            }
+        }
+
+        checkMobile();
+
+        window.addEventListener('resize', checkMobile);
+
+        return () => window.removeEventListener('resize', checkMobile)
+    },[])
 
     //pauses slider autoplay when dragging nav
     const navDraggingHandler = (check) => {
@@ -65,47 +84,77 @@ const Works = () => {
         <PageAnimWrapper>
             <TextWrapper>
                 <SectionHeading style={{marginBottom: '42px'}}>Works</SectionHeading>
-                <Paragraph>I've listed below some of the projects I've made throughout my career as a developer.</Paragraph>
+                <Paragraph style={{textAlign: 'center'}}>I've listed below some of the projects I've made throughout my career as a developer.</Paragraph>
             </TextWrapper>
-            <FullPageWrapper>
-                <Slider ref={sliderRef} {...sliderSettings}>
-                    {worksData.map(work => <WorkItem key={work.name} work={work}/>)}
-                </Slider>
-                <NavWrapper>
-                    <CustomSliderButtons onClick={e => {
-                        e.preventDefault();
-                        if (currentSlide === 0) {
-                            updateSlider(worksData.length - 1);
-                        } else {
-                            updateSlider(currentSlide - 1);
-                        }
-                    }}>
-                        <FiChevronsLeft/>
-                    </CustomSliderButtons>
-                    <CustomSliderNav 
-                        maxSlides={worksData.length} 
-                        currentSlide={currentSlide}
-                        updateSliderFunc={updateSlider}    
-                        dragCheckFunc={navDraggingHandler}
-                    />
-                    <CustomSliderButtons  onClick={e => {
-                        e.preventDefault();
-                        if (currentSlide === worksData.length - 1) {
-                            updateSlider(0);
-                        } else {
-                            updateSlider(currentSlide + 1);
-                        }
-                    }}>
-                        <FiChevronsRight/>
-                    </CustomSliderButtons>
-                </NavWrapper>
-            </FullPageWrapper>
+            {!isMobile 
+                ? <FullPageWrapper>
+                    <Slider ref={sliderRef} {...sliderSettings}>
+                        {worksData.map(work => <WorkItem key={work.name} work={work}/>)}
+                    </Slider>
+                    <NavWrapper>
+                        <CustomSliderButtons onClick={e => {
+                            e.preventDefault();
+                            if (currentSlide === 0) {
+                                updateSlider(worksData.length - 1);
+                            } else {
+                                updateSlider(currentSlide - 1);
+                            }
+                        }}>
+                            <FiChevronsLeft/>
+                        </CustomSliderButtons>
+                        <CustomSliderNav 
+                            maxSlides={worksData.length} 
+                            currentSlide={currentSlide}
+                            updateSliderFunc={updateSlider}    
+                            dragCheckFunc={navDraggingHandler}
+                        />
+                        <CustomSliderButtons  onClick={e => {
+                            e.preventDefault();
+                            if (currentSlide === worksData.length - 1) {
+                                updateSlider(0);
+                            } else {
+                                updateSlider(currentSlide + 1);
+                            }
+                        }}>
+                            <FiChevronsRight/>
+                        </CustomSliderButtons>
+                    </NavWrapper>
+                </FullPageWrapper>
+
+                : <BlockItemsWrapper>
+                    {worksData.map(work => (
+                        <ItemWrapper key={work.name}>
+                            <WorkItem work={work}/>
+                        </ItemWrapper>
+                    ))}
+                </BlockItemsWrapper>
+            }
         </PageAnimWrapper>
     )
 }
 
+const BlockItemsWrapper = styled(MainContainer)`
+    padding-bottom: 72px;
+    min-height: initial!important;
+`
+
+const ItemWrapper = styled.div`
+    margin: 0 0 24px;
+    &:last-child {
+        margin: 0;
+    }
+`
+
 const TextWrapper = styled(NarrowWrapper)`
     padding: 72px 0;
+    
+    @media only screen and (max-width: 1440px) {
+        padding: 40px 0;
+    }
+    @media only screen and (max-width: 1080px) {
+        max-width: 1027px;
+        padding: 0 16px;
+    }
 `
 
 const NavWrapper = styled.div`
@@ -114,6 +163,10 @@ const NavWrapper = styled.div`
     align-items: center;
     justify-content: center;
     margin: 42px auto 24px;
+    
+    @media only screen and (max-width: 725px) {
+        margin: 24px auto;
+    }
 `
 
 const CustomSliderButtons = styled.button`
@@ -127,7 +180,7 @@ const CustomSliderButtons = styled.button`
         height: auto;
         color: ${getTheme('trackColor')};
     }
-    &:hover svg {
+    &:hover, &:focus svg {
         color: ${getTheme('thumbColor')};
     }
 `

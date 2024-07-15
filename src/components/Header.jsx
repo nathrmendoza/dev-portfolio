@@ -16,6 +16,8 @@ import Navigation from './Navigation'
 import customNavigation from "../hooks/customNavigation"
 
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import MobileNavigation from './MobileNavigation'
 
 const gradientVariants = {
     initial: {opacity: 0 },
@@ -51,7 +53,7 @@ const gradientWrapperVariants = {
     }
 }
 
-const Header = ({toggleThemeFunc, themeColor, isWorkSingle, themeToggleEnabled}) => {
+const Header = ({toggleThemeFunc, themeColor, isWorkSingle}) => {
     
     const defaultSocMed = {
         width: '30px',
@@ -60,9 +62,27 @@ const Header = ({toggleThemeFunc, themeColor, isWorkSingle, themeToggleEnabled})
     }
 
     const customLinkTo = customNavigation();
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+
+        const checkMobile = () => {
+            if (window.innerWidth < 1081) {
+                setIsMobile(true);
+            } else {
+                setIsMobile(false);
+            }
+        }
+
+        checkMobile();
+
+        window.addEventListener('resize', checkMobile);
+
+        return () => window.removeEventListener('resize', checkMobile)
+    },[])
 
     return (
-        <HeaderMain>
+        <HeaderMain className='the-header'>
             {!isWorkSingle && <motion.div
                 variants={gradientWrapperVariants} 
                 initial="initial"
@@ -83,9 +103,11 @@ const Header = ({toggleThemeFunc, themeColor, isWorkSingle, themeToggleEnabled})
                             }
                         </LogoAnimWrapper>
                     </LogoContainer>
-                    <NavContainer>
-                        <Navigation />
-                    </NavContainer>
+                    {!isMobile && 
+                        <NavContainer>
+                            <Navigation />
+                        </NavContainer>
+                    }
                     <STTContainer>
                         <SocMedAnchor href="https://www.linkedin.com/in/nathaniel-mendoza-425203163/" className='socLink' target="_blank" rel="noopener noreferrer">
                             <CustomLinkedin/>
@@ -93,13 +115,14 @@ const Header = ({toggleThemeFunc, themeColor, isWorkSingle, themeToggleEnabled})
                         <SocMedAnchor href="https://github.com/nathrmendoza" className='socLink' target="_blank" rel="noopener noreferrer">
                             <FaGithub style={defaultSocMed}/>
                         </SocMedAnchor>
-                        <ThemeToggleButton onClick={e => {toggleThemeFunc(e)}} disabled={!themeToggleEnabled}>
+                        <ThemeToggleButton onClick={e => {toggleThemeFunc(e)}} disabled={isWorkSingle}>
                             <ThemeIconsContainer className={themeColor}>
                                 <MdSunny className='sun'/>
                                 <IoMdMoon className='moon'/>
                             </ThemeIconsContainer>
                         </ThemeToggleButton>
                     </STTContainer>
+                    {isMobile && <MobileNavigation/>}
                 </FlexContainer>
             </MainNoHeight>
         </HeaderMain>
@@ -107,6 +130,7 @@ const Header = ({toggleThemeFunc, themeColor, isWorkSingle, themeToggleEnabled})
 }
 
 const BackgroundLight = styled(motion.div)`
+    pointer-events: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -116,6 +140,7 @@ const BackgroundLight = styled(motion.div)`
     background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 65%);
 `
 const BackgroundDark = styled(motion.div)`
+    pointer-events: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -130,8 +155,6 @@ const HeaderMain = styled.div`
     top: 0;
     left: 0;
     position: sticky;
-    // background: ${getTheme('bodyColor')};
-    // background: ${getTheme('headerGradient')};
     z-index: 99;
     transition: background-color 0.6s ease-in-out;
 `
@@ -145,10 +168,15 @@ const NavContainer = styled.div`
 
 const LogoContainer = styled.button`
     position: relative;
-    width: 125px;
-    height: 71px;
     background: none;
     border: none;
+
+    @media only screen and (max-width: 1080px) {
+        svg {
+            width: 86px;
+            height: auto;
+        }
+    }
 `
 
 const CustomLinkedin = styled(LinkedinCircle)`
@@ -171,6 +199,18 @@ const STTContainer = styled.div`
         &:last-of-type {
             margin-right: 0;
         }
+            
+        @media only screen and (max-width: 1080px) {
+            margin-right: 14px
+        }
+
+    }
+
+    @media only screen and (max-width: 1080px) {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 36px;
     }
 `
 
@@ -186,6 +226,11 @@ const ThemeToggleButton = styled.button`
     overflow: hidden;
     margin-left: 10px;
     transition: all 0.3s cubic-bezier(0.6, 0.01, 0.05, 0.95);
+    
+    @media only screen and (max-width: 1080px) {
+        width: 86px;
+        height: 32px;
+    }
 
     &:disabled {
         opacity: 0.45;
@@ -199,6 +244,11 @@ const ThemeIconsContainer = styled.div`
     width: 108px;
     height: 108px;
     transform-origin: center;
+
+    @media only screen and (max-width: 1080px) {
+        width: 86px;
+        height: 86px;
+    }
 
     &.light {
         animation: 0.6s toSun forwards ease-in-out;
@@ -214,6 +264,11 @@ const ThemeIconsContainer = styled.div`
         transform: translateX(-50%);
         left: 50%;
         cursor: pointer;
+
+        @media only screen and (max-width: 1080px) {
+            width: 32px;
+            height: 32px;
+        }
 
         &.sun {
             top: 0;
@@ -234,6 +289,10 @@ const FlexContainer = styled.div`
     justify-content: space-between;
     padding: 42px 0;
     position: relative;
+
+    @media only screen and (max-width: 1080px) {
+        padding: 24px 0;
+    }
 `
     const SocMedAnchor = styled.a`
         text-decoration: none;
@@ -258,7 +317,7 @@ const FlexContainer = styled.div`
             transform: translate(-50%, -50%);
             opacity: 0
         }
-        &:hover {
+        &:hover, &:focus {
             opacity: 0.75;
             transform: scale(0.9);
     

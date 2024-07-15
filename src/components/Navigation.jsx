@@ -9,20 +9,24 @@ const Navigation = () => {
     return (
         <Nav>
             <LinksContainer >
-                <li><CustomLink 
-                    onClick={() => customLinkTo('/')} >About me</CustomLink></li>
-                <li><CustomLink 
-                    onClick={() => customLinkTo('/background')} >Background</CustomLink></li>
-                <li><CustomLink 
-                    onClick={() => customLinkTo('/toolkit')} >Toolkit</CustomLink></li>
-                <li><CustomLink 
-                    onClick={() => customLinkTo('/works')} >Works</CustomLink></li>
-                <li><CustomLink 
-                    onClick={() => customLinkTo('/contact')} >Contact</CustomLink></li>
+                <LinkItem><CustomLink 
+                    onClick={() => customLinkTo('/')} >About me</CustomLink></LinkItem>
+                <LinkItem><CustomLink 
+                    onClick={() => customLinkTo('/background')} >Background</CustomLink></LinkItem>
+                <LinkItem><CustomLink 
+                    onClick={() => customLinkTo('/toolkit')} >Toolkit</CustomLink></LinkItem>
+                <LinkItem><CustomLink 
+                    onClick={() => customLinkTo('/works')} >Works</CustomLink></LinkItem>
+                <LinkItem><CustomLink 
+                    onClick={() => customLinkTo('/contact')} >Contact</CustomLink></LinkItem>
             </LinksContainer>
         </Nav>
     )
 }
+
+const LinkItem = styled.li`
+    width: max-content;
+`
 
 const Nav = styled.nav`
     position: relative;
@@ -64,7 +68,7 @@ const CustomLink = styled.button`
         position: absolute;
     }
 
-    &:hover {
+    &:hover, &:focus {
         opacity: 0.75;
         &:after{
             bottom: -20px;
@@ -77,6 +81,13 @@ const CustomLink = styled.button`
         &:after {
             opacity: 1!important;
             bottom: -20px!important;
+        }
+    }
+
+    
+    @media only screen and (max-width: 1440px) {
+        font-size: 18px;
+        &:after {
         }
     }
 `

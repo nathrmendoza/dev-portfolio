@@ -5,7 +5,6 @@ import WorksPageAnimWrapper from '../utils/WorksPageAnimWrapper';
 import { NarrowWrapper } from '../styles/ThemeContainers';
 import { Paragraph, WorkItemHeading } from '../styles/Typography';
 import styled from 'styled-components';
-import useScrollToTop from '../hooks/scrollReset';
 import ExternalCTA from '../components/ExternalCTA';
 import { getTheme } from '../styles/ThemeUtils';
 import ToolItem from '../components/ToolItem';
@@ -20,19 +19,14 @@ const WorksSingle = ({updateThemeFunc}) => {
 
     const customLinkTo = customNavigation();
 
-    //reset scroll
-    useScrollToTop();
-
     const {
         name = '',
-        thumbnail = '',
         description = '',
         siteLink = '',
         primaryColor = '',
         theme = '',
         techStack = [],
         photos = [],
-        mobilePhotos = []
     } = work
     
     useEffect(() => {
@@ -48,7 +42,7 @@ const WorksSingle = ({updateThemeFunc}) => {
         <>
         <WorksPageAnimWrapper mainColor={primaryColor}>
             <ContentWrapper className='content-wrapper'>
-                <NarrowWrapper>
+                <NarrowWrapper style={{padding: '0 16px'}}>
                     <WorkItemHeading>{name}</WorkItemHeading>
                     <Paragraph style={{marginBottom: 0}}>
                         {description}
@@ -73,6 +67,10 @@ const WorksSingle = ({updateThemeFunc}) => {
 const ContentWrapper = styled.div`
     padding: 72px 0 0;
     width: 100%;
+    
+    @media only screen and (max-width: 1440px) {
+        padding: 40px 0 0;
+    }
 `
 
 const TechHeading = styled.h4`
@@ -84,6 +82,10 @@ const TechHeading = styled.h4`
     color: ${getTheme('mainColor')};
     font-style: italic;
     font-weight: 600;
+    
+    @media only screen and (max-width: 1440px) {
+        font-size: 32px;
+    }
 `
 
 const TechRow = styled.div`
@@ -94,6 +96,12 @@ const TechRow = styled.div`
 
     .toolItem {
         width: 20%;
+        @media only screen and (max-width: 940px) {
+            width: 33.333%;
+        }
+        @media only screen and (max-width: 640px) {
+            width: 50%;
+        }
     }
 `
 

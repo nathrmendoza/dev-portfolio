@@ -60,7 +60,7 @@ const LinkWrapper = styled.a`
     display: inline-block;
     margin-top: 32px;
 
-    &:hover {
+    &:hover, &:focus {
         padding-left: 56px;
         .circle {
             &:nth-child(2) {

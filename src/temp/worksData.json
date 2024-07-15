@@ -41,8 +41,7 @@
                 "iconName": "FaShopify"
             }
         ],
-        "photos":["assets/images/laika-full.jpg"],
-        "mobilePhotos": []
+        "photos":["assets/images/laika-full.jpg"]
     },
     {
         "name": "Cobram Estate Olive Oil",
@@ -94,8 +93,7 @@
                 "iconName": "FaShopify"
             }
         ],
-        "photos":["assets/images/cobram-full.jpg"],
-        "mobilePhotos": []
+        "photos":["assets/images/cobram-full.jpg"]
     },
     {
         "name": "Bruce Insurance",
@@ -139,8 +137,7 @@
                 "iconName": "FaWordpress"
             }
         ],
-        "photos":["assets/images/bruce-full.jpg"],
-        "mobilePhotos": []
+        "photos":["assets/images/bruce-full.jpg"]
     },
     {
         "name": "Wild Kiwihearts",
@@ -184,8 +181,7 @@
                 "iconName": "FaShopify"
             }
         ],
-        "photos":["assets/images/wkhearts-full.jpg"],
-        "mobilePhotos": []
+        "photos":["assets/images/wkhearts-full.jpg"]
     },
     {
         "name": "Core Energy Belt",
@@ -229,8 +225,7 @@
                 "iconName": "FaShopify"
             }
         ],
-        "photos":["assets/images/cebelt-full.jpg"],
-        "mobilePhotos": []
+        "photos":["assets/images/cebelt-full.jpg"]
     },
     {
         "name": "WSCC",
@@ -274,8 +269,7 @@
                 "iconName": "SiCraftcms"
             }
         ],
-        "photos":["assets/images/wscc-full.jpg"],
-        "mobilePhotos": []
+        "photos":["assets/images/wscc-full.jpg"]
     },
     {
         "name": "Sta. Lucia Land Inc.",
@@ -319,8 +313,7 @@
                 "iconName": "FaWordpress"
             }
         ],
-        "photos":["assets/images/sli-full.jpg"],
-        "mobilePhotos": []
+        "photos":["assets/images/sli-full.jpg"]
     },
     {
         "name": "Cadent TV",
@@ -364,8 +357,7 @@
                 "iconName": "FaWordpress"
             }
         ],
-        "photos":["assets/images/cadent-full.jpg"],
-        "mobilePhotos": []
+        "photos":["assets/images/cadent-full.jpg"]
     },
     {
         "name": "Sapporo Products",
@@ -409,7 +401,6 @@
                 "iconName": "FaWordpress"
             }
         ],
-        "photos":["assets/images/sapp-full.jpg"],
-        "mobilePhotos": []
+        "photos":["assets/images/sapp-full.jpg"]
     }
 ]

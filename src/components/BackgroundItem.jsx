@@ -43,15 +43,37 @@ const BackgroundItem = ({work, orient, startAnimation}) => {
 const BIRow = styled.div`
     width: 100%;
     display: flex;
-    justify-content: ${props => props.$orient === 'right' ? 'flex-end' : 'flex-start'}
+    justify-content: ${props => props.$orient === 'right' ? 'flex-end' : 'flex-start'};
+
+    @media only screen and (max-width: 940px) {
+        padding-left: 12px;
+    }
 `
 
 const BIInner = styled.div`
     width: 50%;
-    ${props => props.$orient === 'right' ? 'padding-left: 93px' : 'padding-right: 93px'};
+    padding-${props => props.$orient === 'right' ? 'left' : 'right'}: 93px;
     position: relative;
     text-align: ${props => props.$orient === 'right' ? 'left' : 'right'};
     min-height: 320px;
+        
+	@media only screen and (max-width: 1080px) {
+		min-height: 280px;
+        padding-${props => props.$orient === 'right' ? 'left' : 'right'}: 48px;
+	}
+        
+    @media only screen and (max-width: 940px) {
+        width: 100%;
+        padding-left: 48px;
+        padding-right: 0;
+        text-align: left;
+        min-height: 240px;
+        padding-bottom: 40px;
+    }
+
+    @media only screen and (max-width: 480px) {
+        padding-left: 36px;
+    }
 
     &:before {
         content: '';
@@ -61,8 +83,18 @@ const BIInner = styled.div`
         background: ${getTheme('mainColor')};
         position: absolute;
         top: 12px;
-        ${props => props.$orient === 'right' ? 'left: -18px;' : 'right: -18px'};
+        ${props => props.$orient === 'right' ? 'left' : 'right'}: -18px;
         transition: background-color 0.6s ease-out;
+
+        @media only screen and (max-width: 1080px) {
+            width: 26px;
+            height: 26px;
+            ${props => props.$orient === 'right' ? 'left' : 'right'}: -13px;
+        }
+        @media only screen and (max-width: 940px) {
+            top: 9px;
+            left: -13px;
+        }
     }
 
     &:after {
@@ -74,6 +106,9 @@ const BIInner = styled.div`
         ${props => props.$orient === 'right' ? 'left' : 'right'}: -2px;
         background: ${getTheme('mainColor')};
         display: inline-block;
+        @media only screen and (max-width: 940px) {
+            left: -2px;
+        }
     }
 `
 
@@ -85,6 +120,15 @@ const DateText = styled.h4`
     font-style: italic;
     color: ${getTheme('mainColor')};
     margin-bottom: 24px;
+    
+	@media only screen and (max-width: 1080px) {
+		font-size: 36px;
+        margin-bottom: 12px
+	}
+	@media only screen and (max-width: 480px) {
+		font-size: 32px;
+        margin-bottom: 12px
+	}
 `
 
 export default BackgroundItem

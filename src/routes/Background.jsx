@@ -55,11 +55,18 @@ const MultiDotElement = styled(MultiDot)`
     left: 50%;
     bottom: 48px;
     transform: translateX(-50%) ${props => (props.$themeColor === 'dark' ? 'rotate(180deg)' : 'rotate(0)')};
+    @media only screen and (max-width: 940px) {
+        left: 6px;
+        transform: ${props => (props.$themeColor === 'dark' ? 'rotate(180deg)' : 'rotate(0)')};
+    }
 `
 
 const InnerWrapper = styled(LargeWrapper)`
     padding: 72px 0 124px;
     position: relative;
+    @media only screen and (max-width: 1440px) {
+        padding: 40px 0 124px;
+    }
 `
 
 export default Background

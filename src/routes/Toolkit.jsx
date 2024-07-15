@@ -93,6 +93,14 @@ const Toolkit = () => {
 const InnerWrapper = styled(NarrowWrapper)`
     padding: 72px 0 124px;
     position: relative;
+    
+    @media only screen and (max-width: 1440px) {
+        padding: 40px 0 124px;
+    }
+    @media only screen and (max-width: 940px) {
+        padding: 40px 0 72px;
+        width: 100%;
+    }
 `
 
 const FlexWrapper = styled.div`
@@ -120,6 +128,18 @@ const ToolColumns = styled.ul`
 
         & > li {
             width: 25%;
+            @media only screen and (max-width: 940px) {
+                width: 50%;
+            }
+        }
+    }
+        
+    @media only screen and (max-width: 940px) {
+        margin: 0 0 40px;
+        width: 100%;
+        
+        &:last-child {
+            margin: 0;
         }
     }
 `

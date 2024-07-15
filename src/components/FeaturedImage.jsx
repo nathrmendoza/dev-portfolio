@@ -32,7 +32,7 @@ const FeaturedImage = ({imagePath, width, alt, themeColor}) => {
         animate={isOpen ? "opened" : ""} 
         $width={width} 
         onClick={() => setIsOpen(!isOpen)}>
-        <img src={imagePath} width={width} height="auto" alt={alt} />
+        <Image src={imagePath} width={width} height="auto" alt={alt} />
         {themeColor &&
         <HoverContainer 
             $red={hextToRgb(themeColor).r}
@@ -45,13 +45,20 @@ const FeaturedImage = ({imagePath, width, alt, themeColor}) => {
   )
 }
 
+const Image = styled.img`
+    width: 100%;
+    height: auto;
+    display: block;
+`
+
 const ImageWrapper = styled(motion.div)`
     width: 100%;
     max-width: ${props => props.$width}px;
     margin: 56px auto 0;
     overflow: hidden;
     position: relative;
-    &:hover .hoverText {
+
+    &:hover .hoverText, &:focus .hoverText {
         opacity: 0.5;
     }
 `

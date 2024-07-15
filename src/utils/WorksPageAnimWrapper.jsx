@@ -17,8 +17,8 @@ const circleBackgroundVariants = {
         x: '-50%',
         y: '-50%',
         opacity: 1,
-        width: '200vw',
-        height: '200vw',
+        width: '200vh',
+        height: '200vh',
         transition: {
             duration: 3,
             ease: [0.6, 0.01, 0.05, 0.95]

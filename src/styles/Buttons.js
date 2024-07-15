@@ -8,7 +8,7 @@ export const ViewWorkCTA = styled.button`
     line-height: 1;
     font-weight: 500;
     font-style: italic;
-    color: #FFF;
+    color: ${getTheme('mainColor')};
 	text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     text-align: center;
     text-decoration: none;
@@ -22,7 +22,7 @@ export const ViewWorkCTA = styled.button`
         content: '';
         width: 16px;
         height: 16px;
-        background-color: #FFFFFF;
+        background-color: ${getTheme('mainColor')};
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -32,10 +32,18 @@ export const ViewWorkCTA = styled.button`
         pointer-events: none;
     }
 
-    &:hover {
+    &:hover, &:focus {
         opacity: 0.75;
         &:after {
             transform: translateX(-50%) translateY(8px);
+        }
+    }
+        
+    @media only screen and (max-width: 1440px) {
+        font-size: 26px;
+        &:after {
+            width: 12px;
+            height: 12px
         }
     }
 `

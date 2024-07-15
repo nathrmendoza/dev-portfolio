@@ -6,6 +6,11 @@ export const MainContainer = styled.div`
     padding: 0 56px;
     margin: 0 auto;
     min-height: calc(100vh - 155px - 72px);
+
+    @media only screen and (max-width: 1080px) {
+        padding: 0 16px;
+        min-height: calc(100vh - 102.84px - 130px);
+    }
 `
 
 export const FullPageWrapper = styled.div`
@@ -37,4 +42,7 @@ export const MainNoHeight = styled.div`
     padding: 0 56px;
     margin: 0 auto;
 
+    @media only screen and (max-width: 1080px) {
+        padding: 0 16px;
+    }
 `

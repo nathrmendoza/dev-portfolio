@@ -126,6 +126,10 @@ const Contact = () => {
 const InnerWrapper = styled(NarrowWrapper)`
     padding: 72px 0 124px;
     position: relative;
+    
+    @media only screen and (max-width: 1440px) {
+        padding: 40px 0 60px;
+    }
 `
 
 const LoadingWrapper = styled.div`
@@ -143,6 +147,15 @@ const LoadText = styled.span`
     color: ${getTheme('mainColor')};
     font-style: italic;
     font-weight: 600;
+    
+	@media only screen and (max-width: 1440px) {
+		font-size: 18px;
+		line-height: 36px
+	}
+	@media only screen and (max-width: 640px) {
+		font-size: 16px;
+		line-height: 32px;
+	}
 `
 
 const LoadIcon = styled.div`
@@ -243,6 +256,13 @@ const Input = styled.input`
     line-height: 1;
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
     border: none;
+    
+    @media only screen and (max-width: 1440px) {
+        font-size: 18px;
+    }
+    @media only screen and (max-width: 480px) {
+        font-size: 16px;
+    }
 `
 const TextArea = styled.textarea`
     width: 100%;
@@ -256,6 +276,10 @@ const TextArea = styled.textarea`
     border: none;
     resize: none;
     height: 240px;
+    
+    @media only screen and (max-width: 1440px) {
+        font-size: 18px;
+    }
 `
 
 export default Contact

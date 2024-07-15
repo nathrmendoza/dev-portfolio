@@ -7,6 +7,8 @@ const LogoAnimWrapper = ({children}) => {
         <div 
             onMouseEnter={() => setHovered(true)} 
             onMouseLeave={() => setHovered(false)}
+            onFocus={() => setHovered(true)}
+            onBlur={() => setHovered(false)}
             style={{ display: 'inline-block', position: 'relative' }}
         >
             <AnimatePresence>

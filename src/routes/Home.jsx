@@ -37,6 +37,11 @@ const HeroWrapper = styled(MainContainer)`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+        
+    @media only screen and (max-width: 480px) {
+        padding-top: 72px;
+        padding-bottom: 72px;
+    }
 `
 
 const CustomHeroHeading = styled(HeroHeading)`

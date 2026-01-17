@@ -25,10 +25,6 @@ export const HeroHeading = styled.h1`
   @media only screen and (max-width: 640px) {
 	font-size: 48px;
   }
-  @media only screen and (max-width: 480px) {
-	font-size: 36px;
-	margin-bottom: 24px!important;
-  }
 `
 
 export const SectionHeading = styled.h2`

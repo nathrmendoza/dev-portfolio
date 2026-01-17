@@ -6,7 +6,7 @@ import TextTransition, { presets } from 'react-text-transition'
 import { MainContainer, MediumWrapper } from "../styles/ThemeContainers";
 import PageAnimWrapper from "../utils/PageAnimWrapper";
 
-const HEROTEXT = ['veloper', 'signer', 'v Ops'];
+const HEROTEXT = ['veloper', 'bugger', 'ployer', 'liverer', 'miurge'];
 
 const Home = () => {  const [textIndex, setTextIndex] = useState(0);
   
@@ -20,10 +20,10 @@ const Home = () => {  const [textIndex, setTextIndex] = useState(0);
         <HeroWrapper>
             <PageAnimWrapper>
                 <MediumWrapper>
-                    <CustomHeroHeading>Nath De<TextTransition springConfig={presets.gentle}>{HEROTEXT[textIndex % HEROTEXT.length]}</TextTransition></CustomHeroHeading>
+                    <CustomHeroHeading>Nath De<TextTransition inline springConfig={presets.gentle}>{HEROTEXT[textIndex % HEROTEXT.length]}</TextTransition></CustomHeroHeading>
                     <Paragraph style={{textAlign: 'center'}}>
-                        Hey there, I'm Nathaniel Mendoza, or just Nath for short, a UI/UX Developer based in Waitomo Caves, New Zealand. My expertise lies in crafting web applications that provide digital services, ranging in complexity. I thrive on the challenge of constructing projects from scratch and enjoy finding inventive/unique solutions to problems along the way.
-                    </Paragraph>
+                        Hey there, I'm Nathaniel Mendoza, or just Nath for short, a UI/UX Developer based in New Zealand. My expertise lies in crafting web applications that provide digital services, ranging in complexity. I thrive on the challenge of constructing projects from scratch and enjoy finding inventive/unique solutions to problems along the way.
+                    </Paragraph>    
                 </MediumWrapper>
             </PageAnimWrapper>
         </HeroWrapper>

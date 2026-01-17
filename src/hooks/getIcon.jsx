@@ -8,6 +8,7 @@ const iconSets = {
 }
 
 const IconComponent = ({iconName}) => {
+
     const prefix = iconName.slice(0, 2);
     const IconComponent = iconSets[prefix]?.[iconName];
   

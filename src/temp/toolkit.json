@@ -89,8 +89,16 @@
             "iconName": "FaShopify"
         },
         {
+            "label": "Sanity",
+            "iconName": "SiSanity"
+        },
+        {
             "label": "Craft CMS",
             "iconName": "SiCraftcms"
+        },
+        {
+            "label": "Silverstripe",
+            "iconName": "silverstripe"
         },
         {
             "label": "Joomla",

@@ -8,20 +8,20 @@ import { useEffect, useState } from "react"
 
 const worksData = [
     {
-        date: "2016",
-        description: "Enrolled in a BS program in Entertainment and Multimedia Computing at CIIT College of Arts and Technology, Philippines."
+        date: "2024 - present",
+        description: "Currently a Web Developer at Imagic Creative Agency in Christchurch. Building and maintaining websites for clients within New Zealand."
+    },
+    {
+        date: "2021 - 2024",
+        description: "Joined Sonnet Digital as a front-end developer, working with clients from Australia, New Zealand, and the U.S to build their websites."
+    },
+    {
+        date: "2019 - 2021",
+        description: "Worked as a front-end developer at Optimind Technology Solutions, working on websites and ad banners for clients in the Philippines and Hong Kong."
     },
     {
         date: "Mid 2019",
         description: "Completed an internship at University of the Philippines Diliman, College of Social Science and Philosophy, focusing on managing the CSSP school portal."
-    },
-    {
-        date: "2019 - 2021",
-        description: "Worked as a front-end developer at Optimind Technology Solutions, focusing on projects for clients in the Philippines and Hong Kong. Responsibilities included website development, ad banners, and email templates. Additionally, led and assisted other front-end developers in adhering to industry standards."
-    },
-    {
-        date: "2021 - 2024",
-        description: "Joined Sonnet Digital as a front-end developer, collaborating with clients from Australia, New Zealand, and the U.S. Developed various web applications, including informational websites, school portals, ecommerce sites, and internal tools."
     }
 ]
 
